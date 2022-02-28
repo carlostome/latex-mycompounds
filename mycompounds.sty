@@ -1,0 +1,38 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mycompounds}
+
+\DeclareOption*{\PackageWarningNoLine{mycompounds}{Unknown option: `\CurrentOption'}}
+
+\ProcessOptions\relax
+
+\makeatletter
+% see \bbl@allowhyphens (from babel) and \prw@zbreak (from hyphenat)
+\NewDocumentCommand{\@allowhyphens}{}{%
+  \nobreak\hskip\z@skip%
+}
+\NewDocumentCommand{\hyp}{}{%
+  \@allowhyphens-\@allowhyphens%
+}
+\NewDocumentCommand{\nbhyp}{}{%
+  \nobreak\hbox{-}\@allowhyphens%
+}
+\NewDocumentCommand{\ndash}{}{%
+  \@allowhyphens--\@allowhyphens%
+}
+\NewDocumentCommand{\nbndash}{}{%
+  \nobreak\hbox{--}\@allowhyphens%
+}
+\NewDocumentCommand{\mdash}{}{%
+  \@allowhyphens---\@allowhyphens%
+}
+\NewDocumentCommand{\nbmdash}{}{%
+  \nobreak\hbox{---}\@allowhyphens%
+}
+% \discretionary{pre-break}{post-break}{no-break}
+\NewDocumentCommand{\spword}{m}{%
+  (#1\@allowhyphens\discretionary{-)}{}{)}\@allowhyphens%
+}
+\NewDocumentCommand{\spwordH}{m}{%
+  (#1\@allowhyphens\discretionary{-)}{}{-)}\@allowhyphens%
+}
+\makeatother
