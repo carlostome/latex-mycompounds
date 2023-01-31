@@ -35,6 +35,9 @@
 \NewDocumentCommand{\spwordH}{m}{%
   (#1\@allowhyphens\discretionary{-)}{}{-)}\@allowhyphens%
 }
+\NewDocumentCommand{\nbspwordH}{m}{%
+  (#1\nbhyp{})%
+}
 \NewDocumentCommand{\SpwordH}{m}{%
   (#1\@allowhyphens\discretionary{--)}{}{--)}\@allowhyphens%
 }
