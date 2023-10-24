@@ -10,31 +10,23 @@
 \NewDocumentCommand{\@allowhyphens}{}{%
   \nobreak\hskip\z@skip%
 }
-\NewDocumentCommand{\hyp}{}{%
-  \@allowhyphens-\@allowhyphens%
+\NewDocumentCommand{\connector}{m}{%
+  \@allowhyphens#1\@allowhyphens%
 }
-\NewDocumentCommand{\nbhyp}{}{%
-  \nobreak\hbox{-}\@allowhyphens%
+\NewDocumentCommand{\nbconnector}{m}{%
+  \nobreak\hbox{#1}\@allowhyphens%
 }
-\NewDocumentCommand{\ndash}{}{%
-  \@allowhyphens--\@allowhyphens%
+\NewDocumentCommand{\DeclareConnectors}{mmm}{%
+  \NewDocumentCommand{#1}{}{\connector{#3}}%
+  \NewDocumentCommand{#2}{}{\nbconnector{#3}}%
 }
-\NewDocumentCommand{\nbndash}{}{%
-  \nobreak\hbox{--}\@allowhyphens%
-}
-\NewDocumentCommand{\mdash}{}{%
-  \@allowhyphens---\@allowhyphens%
-}
-\NewDocumentCommand{\nbmdash}{}{%
-  \nobreak\hbox{---}\@allowhyphens%
-}
+
+\DeclareConnectors{\hyp}{\nbhyp}{-}
+\DeclareConnectors{\ndash}{\nbndash}{--}
+\DeclareConnectors{\mdash}{\nbmdash}{---}
 % see \slash (from (La)TeX)
-\NewDocumentCommand{\fwdslash}{}{%
-  \@allowhyphens/\penalty\exhyphenpenalty\@allowhyphens%
-}
-\NewDocumentCommand{\nbfwdslash}{}{%
-  \nobreak\hbox{/}\@allowhyphens%
-}
+\DeclareConnectors{\fwdslash}{\nbfwdslash}{/\penalty\exhyphenpenalty}
+
 % \discretionary{pre-break}{post-break}{no-break}
 \NewDocumentCommand{\spword}{m}{%
   (#1\@allowhyphens\discretionary{-)}{}{)}\@allowhyphens%

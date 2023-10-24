@@ -18,6 +18,8 @@
 \righthyphenmin=2
 \end{verbatim*}
 
+\section{Typesetting compound words}
+
 \begin{verbatim*}
 \begin{minipage}{0pt}
 type-theoretic\\\\
@@ -88,6 +90,8 @@ judge\-ment\nbfwdslash{}assertion\\
   judge\-ment\nbfwdslash{}assertion\\
 \end{minipage}
 
+\section{Bracketing parts of compound words}
+
 \begin{verbatim*}
 \begin{minipage}{0pt}
 (pre)sheaf\\\\
@@ -124,5 +128,23 @@ judge\-ment\nbfwdslash{}assertion\\
 \begin{minipage}{0pt}
   (Dedekind--)Peano\\\\
   \SpwordH{Dedekind}Peano\\
+\end{minipage}
+
+\section{Defining new connectors}
+
+\begin{verbatim*}
+\DeclareConnectors{\bwdslash}{\nbbwdslash}{\textbackslash\penalty\exhyphenpenalty}
+\begin{minipage}{0pt}
+do\-cu\-ments\textbackslash\penalty\exhyphenpenalty{}letter.txt\\\\
+do\-cu\-ments\bwdslash{}letter.txt\\\\
+do\-cu\-ments\nbbwdslash{}letter.txt\\
+\end{minipage}
+\end{verbatim*}
+%
+\DeclareConnectors{\bwdslash}{\nbbwdslash}{\textbackslash\penalty\exhyphenpenalty}
+\begin{minipage}{0pt}
+  do\-cu\-ments\textbackslash\penalty\exhyphenpenalty{}letter.txt\\\\
+  do\-cu\-ments\bwdslash{}letter.txt\\\\
+  do\-cu\-ments\nbbwdslash{}letter.txt\\
 \end{minipage}
 \end{document}
