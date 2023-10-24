@@ -1,6 +1,7 @@
 \documentclass{article}
 
-\usepackage{mycompounds}
+\usepackage[hyperref]{mycompounds}
+\usepackage{hyperref}
 
 %\lefthyphenmin=2
 %\righthyphenmin=3
@@ -14,7 +15,8 @@
 \maketitle
 
 \begin{verbatim*}
-\usepackage{mycompounds}
+\usepackage[hyperref]{mycompounds}
+\usepackage{hyperref}
 \righthyphenmin=2
 \end{verbatim*}
 
@@ -147,4 +149,42 @@ do\-cu\-ments\nbbwdslash{}letter.txt\\
   do\-cu\-ments\bwdslash{}letter.txt\\\\
   do\-cu\-ments\nbbwdslash{}letter.txt\\
 \end{minipage}
+
+\section{Connectors in PDF strings (option \texttt{hyperref})}
+
+When the package~\texttt{hyperref} is loaded then using the
+macro~\verb|\hyp|, for instance, which is defined by
+\texttt{mycompounds} using \verb|\DeclareConnector{\hyp}{\nbhyp}{-}|,
+in a \verb|\section| command like
+%
+\begin{verbatim}
+\section{First\hyp{}order logic}
+\end{verbatim}
+%
+generates the following warning (and a faulty bookmark):
+%
+\begin{verbatim}
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hyp' on input line 8.
+\end{verbatim}
+
+One solution is to replace the macro by the corresponding string in
+that specific PDF string:
+%
+\begin{verbatim}
+\section{First\texorpdfstring{\hyp}{-}order logic}
+\end{verbatim}
+%
+This replacement can be achieved for all PDF strings:
+%
+\begin{verbatim}
+\pdfstringdefDisableCommands{\def\hyp{-}}
+\section{First\hyp{}order logic}
+\end{verbatim}
+%
+The replacement of the macros~\verb|\hyp| (and~\verb|\nbhyp|) by the
+string~\texttt{-}, for instance, using the
+macro~\verb|\pdfstringdefDisableCommands| is what the
+command~\verb|\DeclareConnector{\hyp}{\nbhyp}{-}| does when the
+option~\texttt{hyperref} is specified.
 \end{document}
