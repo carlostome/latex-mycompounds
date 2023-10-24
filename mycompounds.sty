@@ -28,6 +28,13 @@
 \NewDocumentCommand{\nbmdash}{}{%
   \nobreak\hbox{---}\@allowhyphens%
 }
+% see \slash (from (La)TeX)
+\NewDocumentCommand{\fwdslash}{}{%
+  \@allowhyphens/\penalty\exhyphenpenalty\@allowhyphens%
+}
+\NewDocumentCommand{\nbfwdslash}{}{%
+  \nobreak\hbox{/}\@allowhyphens%
+}
 % \discretionary{pre-break}{post-break}{no-break}
 \NewDocumentCommand{\spword}{m}{%
   (#1\@allowhyphens\discretionary{-)}{}{)}\@allowhyphens%
