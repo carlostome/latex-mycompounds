@@ -36,8 +36,8 @@
 }
 
 \DeclareConnectors{\hyp}{\nbhyp}{-}
-\DeclareConnectors{\ndash}{\nbndash}{--}
-\DeclareConnectors{\mdash}{\nbmdash}{---}
+\DeclareConnectors{\ndash}{\nbndash}{\textendash}
+\DeclareConnectors{\mdash}{\nbmdash}{\textemdash}
 % see \slash (from (La)TeX)
 \DeclareConnectors{\fwdslash}{\nbfwdslash}{/\penalty\exhyphenpenalty}
 
@@ -52,6 +52,6 @@
   (#1\nbhyp{})%
 }
 \NewDocumentCommand{\SpwordH}{m}{%
-  (#1\@allowhyphens\discretionary{--)}{}{--)}\@allowhyphens%
+  (#1\@allowhyphens\discretionary{\textendash{})}{}{\textendash{})}\@allowhyphens%
 }
 \makeatother
